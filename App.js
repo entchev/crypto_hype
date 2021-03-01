@@ -1,21 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { createStackNavigator } from 'react-navigation-stack'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
+import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import SigninScreen from './src/screens/SigninScreen'
+import SignupScreen from './src/screens/SignupScreen'
+import TrendingScreen from './src/screens/TrendingScreen'
+import WelcomeScreen from './src/screens/WelcomeScreen'
+import DetailScreen from './src/screens/DetailScreen'
+import ProfileScreen from './src/screens/ProfileScreen'
+import MainScreen from './src/screens/MainScreen'
+import FavouritesScreen from './src/screens/FavouritesScreen'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const switchNavigator = createSwitchNavigator({
+  loginFlow: createStackNavigator({
+    WelcomeScreen: WelcomeScreen,
+    Signup: SignupScreen,
+    Signin: SigninScreen,
+  }),
+  mainFlow: createBottomTabNavigator({
+    Home: createStackNavigator({
+      MainScreen: MainScreen,
+      DetailScreen: DetailScreen,
+    }),
+    Profile: ProfileScreen,
+    Favourites: FavouritesScreen,
+    Trending: TrendingScreen,
+  }),
+})
+
+export default createAppContainer(switchNavigator)

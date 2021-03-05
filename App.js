@@ -1,32 +1,33 @@
-import React from 'react'
-import { createStackNavigator } from 'react-navigation-stack'
-import { createBottomTabNavigator } from 'react-navigation-tabs'
-import { createAppContainer, createSwitchNavigator } from 'react-navigation'
+import React, { useState } from 'react'
+import { LogBox } from 'react-native'
+import * as Font from 'expo-font'
+import { enableScreens } from 'react-native-screens'
+import AppLoading from 'expo-app-loading'
+import CryptoNavigator from './src/navigation/CryptoNavigator'
 
-import SigninScreen from './src/screens/SigninScreen'
-import SignupScreen from './src/screens/SignupScreen'
-import TrendingScreen from './src/screens/TrendingScreen'
-import WelcomeScreen from './src/screens/WelcomeScreen'
-import DetailScreen from './src/screens/DetailScreen'
-import ProfileScreen from './src/screens/ProfileScreen'
-import MainScreen from './src/screens/MainScreen'
-import FavouritesScreen from './src/screens/FavouritesScreen'
+enableScreens()
 
-const switchNavigator = createSwitchNavigator({
-  loginFlow: createStackNavigator({
-    WelcomeScreen: WelcomeScreen,
-    Signup: SignupScreen,
-    Signin: SigninScreen,
-  }),
-  mainFlow: createBottomTabNavigator({
-    Home: createStackNavigator({
-      MainScreen: MainScreen,
-      DetailScreen: DetailScreen,
-    }),
-    Profile: ProfileScreen,
-    Favourites: FavouritesScreen,
-    Trending: TrendingScreen,
-  }),
-})
+LogBox.ignoreAllLogs(true) // ignores annoying yellow error messages
 
-export default createAppContainer(switchNavigator)
+const fetchFonts = () => {
+  return Font.loadAsync({
+    'lato-light': require('./assets/fonts/Lato/Lato-Light.ttf'),
+    'lato-regular': require('./assets/fonts/Lato/Lato-Regular.ttf'),
+    'lato-bold': require('./assets/fonts/Lato/Lato-Bold.ttf'),
+  })
+}
+
+export default function App() {
+  const [fontLoaded, setFontLoaded] = useState(false)
+
+  if (!fontLoaded) {
+    return (
+      <AppLoading
+        startAsync={fetchFonts}
+        onFinish={() => setFontLoaded(true)}
+        onError={(err) => console.log(err)}
+      />
+    )
+  }
+  return <CryptoNavigator />
+}

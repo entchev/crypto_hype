@@ -10,6 +10,12 @@ const SettingsScreen = () => {
   )
 }
 
+SettingsScreen.navigationOptions = () => {
+  return {
+    headerTitle: 'Settings',
+  }
+}
+
 const styles = StyleSheet.create({
   screen: {
     fontSize: 28,

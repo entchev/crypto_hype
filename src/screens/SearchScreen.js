@@ -10,6 +10,12 @@ const SearchScreen = () => {
   )
 }
 
+SearchScreen.navigationOptions = () => {
+  return {
+    headerTitle: 'Search',
+  }
+}
+
 const styles = StyleSheet.create({
   screen: {
     fontSize: 28,

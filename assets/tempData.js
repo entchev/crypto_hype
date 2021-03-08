@@ -91,4 +91,58 @@ export const CRYPTOS = [
     3.6,
     30
   ),
+  new Crypto(
+    11,
+    'XTZ',
+    'https://assets.coingecko.com/coins/images/976/thumb/Tezos-logo.png?1547034862',
+    3.19,
+    '2,442,854,204',
+    3.0,
+    22
+  ),
+  new Crypto(
+    12,
+    'UNI',
+    'https://assets.coingecko.com/coins/images/12504/thumb_2x/uniswap-uni.png?1600306604',
+    24.01,
+    '12,432,319,939',
+    1.9,
+    42
+  ),
+  new Crypto(
+    13,
+    'GRT',
+    'https://assets.coingecko.com/coins/images/13397/thumb_2x/Graph_Token.png?1608145566',
+    8.98,
+    '2,374,620,854',
+    1.1,
+    12
+  ),
+  new Crypto(
+    14,
+    'DAI',
+    'https://assets.coingecko.com/coins/images/9956/thumb_2x/dai-multi-collateral-mcd.png?1574218774',
+    0.72,
+    '1,851,334,086',
+    -0.1,
+    4
+  ),
+  new Crypto(
+    15,
+    'MKR',
+    'https://assets.coingecko.com/coins/images/1364/thumb_2x/Mark_Maker.png?1585191826',
+    1535,
+    '1,377,148,647',
+    0.4,
+    19
+  ),
+  new Crypto(
+    16,
+    'ENJ',
+    'https://assets.coingecko.com/coins/images/1102/thumb_2x/enjin-coin-logo.png?1547035078',
+    1.19,
+    '1,102,656,342',
+    -2.1,
+    70
+  ),
 ]

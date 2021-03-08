@@ -7,13 +7,13 @@ import TrendingScreen from '../screens/TrendingScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 import SearchScreen from '../screens/SearchScreen'
 import FavouritesScreen from '../screens/FavouritesScreen'
-import { Platform, Text } from 'react-native'
+import { Platform } from 'react-native'
 import Colors from '../../constants/Colors'
-import { NavigationContainer } from '@react-navigation/native'
 import { FontAwesome } from '@expo/vector-icons'
 import { Ionicons } from '@expo/vector-icons'
 import ProfileScreen from '../screens/ProfileScreen'
-import DetailScreen from '../screens/ProfileScreen'
+import DetailScreen from '../screens/DetailScreen'
+import AboutScreen from '../screens/AboutScreen'
 
 const defaultStackNavOptions = {
   headerStyle: {
@@ -31,18 +31,10 @@ const defaultStackNavOptions = {
 
 const StackNavigator = createStackNavigator(
   {
-    Main: {
-      screen: TrendingScreen,
-    },
-    Search: {
-      screen: SearchScreen,
-    },
-    Settings: {
-      screen: SettingsScreen,
-    },
-    Details: {
-      screen: DetailScreen,
-    },
+    Main: TrendingScreen,
+    Search: SearchScreen,
+    Settings: SettingsScreen,
+    Details: DetailScreen,
   },
   {
     defaultNavigationOptions: defaultStackNavOptions,
@@ -134,6 +126,12 @@ const MainNavigator = createDrawerNavigator(
       screen: ProfileScreen,
       navigationOptions: {
         drawerLabel: 'Profile',
+      },
+    },
+    About: {
+      screen: AboutScreen,
+      navigationOptions: {
+        drawerLabel: 'About',
       },
     },
   },

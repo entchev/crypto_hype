@@ -37,8 +37,10 @@ const CryptoTile = (props) => {
 const styles = StyleSheet.create({
   gridItem: {
     flex: 1,
-    margin: 5,
-    height: 46,
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 10,
+    height: 56,
     borderRadius: 10,
     overflow:
       Platform.OS === 'android' && Platform.Version >= 21
@@ -53,9 +55,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.26,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 10,
-    padding: 15,
-    justifyContent: 'space-around',
-    alignItems: 'flex-start',
+    paddingTop: 20,
+    padding: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
+    marginLeft: 10,
+    marginRight: 10,
+    justifyContent: 'space-between',
+    alignContent: 'center',
   },
   title: {
     fontFamily: 'lato-regular',

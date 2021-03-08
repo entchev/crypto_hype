@@ -1,21 +1,12 @@
 import React from 'react'
-import {
-  FlatList,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-} from 'react-native'
-import { Button } from 'react-native-elements'
-import Spacer from '../components/Spacer'
+import { FlatList, StyleSheet, View, Text } from 'react-native'
 import { CRYPTOS } from '../../assets/tempData'
 import CryptoTile from '../components/CryptoTile'
 import HeaderButton from '../components/HeaderButton'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
+import HeaderListItems from '../components/HeaderListItems'
 
-const TrendingScreen = () => {
+const TrendingScreen = (props) => {
   const renderItem = (itemData) => {
     return (
       <CryptoTile
@@ -26,7 +17,12 @@ const TrendingScreen = () => {
         market_cap={itemData.item.market_cap}
         hype_index={itemData.item.hype_index}
         onSelect={() => {
-          console.log('Crypto Selected!')
+          props.navigation.navigate({
+            routeName: 'Details',
+            params: {
+              cryptoId: itemData.item.name,
+            },
+          })
         }}
       />
     )
@@ -38,12 +34,17 @@ const TrendingScreen = () => {
         keyExtractor={(item, index) => item.id}
         data={CRYPTOS}
         renderItem={renderItem}
+        ListHeaderComponent={() => {
+          return <HeaderListItems />
+        }}
+        stickyHeaderIndices={[0]}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   )
 }
 
-TrendingScreen.navigationOptions = () => {
+TrendingScreen.navigationOptions = (navData) => {
   return {
     headerTitle: 'Trending Cryptos',
     headerLeft: () => (
@@ -63,7 +64,7 @@ TrendingScreen.navigationOptions = () => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    marginTop: 70,
+    marginTop: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },

@@ -20,7 +20,7 @@ const TrendingScreen = (props) => {
           props.navigation.navigate({
             routeName: 'Details',
             params: {
-              cryptoId: itemData.item.name,
+              cryptoId: itemData.item.id,
             },
           })
         }}

@@ -4,10 +4,19 @@ import * as Font from 'expo-font'
 import { enableScreens } from 'react-native-screens'
 import AppLoading from 'expo-app-loading'
 import CryptoNavigator from './src/navigation/CryptoNavigator'
+import { createStore, combineReducers } from 'redux'
+import { Provider } from 'react-redux'
+import cryptoReducer from './src/store/reducers/cryptos'
 
 enableScreens()
 
 LogBox.ignoreAllLogs(true) // ignores annoying yellow error messages
+
+const rootReducer = combineReducers({
+  cryptoList: cryptoReducer,
+})
+
+const store = createStore(rootReducer)
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -29,5 +38,9 @@ export default function App() {
       />
     )
   }
-  return <CryptoNavigator />
+  return (
+    <Provider store={store}>
+      <CryptoNavigator />
+    </Provider>
+  )
 }

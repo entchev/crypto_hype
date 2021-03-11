@@ -14,7 +14,7 @@ const TrendingScreen = (props) => {
         id={itemData.item.id}
         logoUrl={itemData.item.logoUrl}
         latest_price={itemData.item.latest_price}
-        market_cap={itemData.item.market_cap}
+        market_cap={itemData.item.trending}
         hype_index={itemData.item.hype_index}
         onSelect={() => {
           props.navigation.navigate({
